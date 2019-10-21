@@ -4,25 +4,37 @@ FROM php:7.3-alpine
 RUN set -eux; \
 	\
 	apk add --no-cache --virtual .build-deps \
-    build-essential \
+    coreutils \
+    freetype-dev \
     mariadb-client \
-    zlib1g-dev \
-    libicu-dev \
     libpng-dev \
     libxml2-dev \
-    libjpeg62-turbo-dev \
-    libfreetype6-dev \
-    locales \
-    cron \
     zip \
     libzip-dev \
     jpegoptim optipng pngquant gifsicle \
     unzip \
     git \
     curl \
-    ; \
-	\
-
+    ;
+	
+RUN apk add --no-cache --virtual \
+    libjpeg62-turbo-dev
+    
+RUN apk add --no-cache --virtual \
+    libfreetype6-dev
+    
+RUN apk add --no-cache --virtual \
+    zlib1g-dev
+    
+RUN apk add --no-cache --virtual \
+    libicu-dev
+    
+RUN apk add --no-cache --virtual \
+    locales
+    
+RUN apk add --no-cache --virtual \
+    cron
+    
 #RUN apt clean && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl bcmath xml opcache
@@ -37,5 +49,3 @@ RUN docker-php-ext-enable xdebug
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 WORKDIR /var/www
-
-CMD ["php-fpm"]
