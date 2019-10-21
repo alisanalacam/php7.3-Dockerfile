@@ -1,5 +1,5 @@
 #FROM php:7.3.10-fpm
-FROM 7.3-alpine
+FROM php:7.3-alpine
   
 RUN apt-get update && apt-get install -y \
     build-essential \
