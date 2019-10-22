@@ -15,6 +15,8 @@ RUN set -eux; \
     unzip \
     git \
     curl \
+    gettext \
+    gettext-dev \
     ;
 	
 RUN apk add --no-cache --virtual \
