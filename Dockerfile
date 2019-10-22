@@ -31,15 +31,8 @@ RUN apk add --no-cache --virtual \
 RUN apk add --no-cache --virtual \
     zlib1g-dev
     
-RUN apk add --no-cache --virtual \
-    libicu-dev
-    
-RUN apk add --no-cache --virtual \
-    locales
-    
-RUN apk add --no-cache --virtual \
-    cron
-    
+RUN apk add --no-cache libicu-dev locales cron
+        
 #RUN apt clean && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl bcmath xml opcache
