@@ -21,6 +21,9 @@ RUN apk add --no-cache --virtual \
     libjpeg62-turbo-dev
     
 RUN apk add --no-cache --virtual \
+    g++
+    
+RUN apk add --no-cache --virtual \
     libfreetype6-dev
     
 RUN apk add --no-cache --virtual \
